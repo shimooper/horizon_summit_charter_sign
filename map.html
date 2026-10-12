@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Charter Signers Map</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body class="map-page">
+  <div class="map-bar">
+    <h1>Federal Charter signers</h1>
+    <span class="status hint" id="status"></span>
+    <span class="total"><span id="total">0</span> signed</span>
+    <a href="index.html">Sign the charter</a>
+  </div>
+  <div id="map" role="img" aria-label="World map of cities where the charter was signed"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+  <script src="assets/config.js"></script>
+  <script src="assets/map.js"></script>
+</body>
+</html>

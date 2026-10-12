@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign the Federal Charter</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="site">
+    <h1>The Federal Charter</h1>
+    <p>Read the charter, add your signature, and receive your signed copy by email.</p>
+  </header>
+
+  <main>
+    <section class="card" aria-labelledby="read-h">
+      <h2 id="read-h">1. Read the charter</h2>
+      <object class="viewer" data="assets/Federal%20Charter%20Eng.pdf" type="application/pdf">
+        <p>Your browser can't display the PDF here.
+          <a href="assets/Federal%20Charter%20Eng.pdf">Download the charter</a>.</p>
+      </object>
+      <p class="hint"><a href="assets/Federal%20Charter%20Eng.pdf" target="_blank" rel="noopener">Open / download the PDF</a></p>
+    </section>
+
+    <section class="card" aria-labelledby="sign-h">
+      <div id="form-view">
+        <h2 id="sign-h">2. Sign it</h2>
+        <form id="sign-form" novalidate autocomplete="off">
+          <label for="name">Full name</label>
+          <input type="text" id="name" name="name" maxlength="100" required autocomplete="name">
+          <div class="field-error" id="name-err" role="alert"></div>
+
+          <label for="city">City</label>
+          <div class="ac">
+            <input type="text" id="city" role="combobox" aria-autocomplete="list" aria-expanded="false"
+                   aria-controls="city-list" maxlength="100" placeholder="Start typing, then pick a city" autocomplete="off">
+            <ul id="city-list" role="listbox" hidden></ul>
+          </div>
+          <div class="picked" id="city-picked" hidden></div>
+          <div class="field-error" id="city-err" role="alert"></div>
+
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" maxlength="200" required autocomplete="email">
+          <div class="hint">Your signed copy will be sent here.</div>
+          <div class="field-error" id="email-err" role="alert"></div>
+
+          <div class="hp" aria-hidden="true">
+            <label for="website">Leave this field empty</label>
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+          </div>
+
+          <label class="agree">
+            <input type="checkbox" id="agree">
+            <span>I have read and agree to the Federal Charter.</span>
+          </label>
+          <div class="field-error" id="agree-err" role="alert"></div>
+
+          <button type="submit" class="primary" id="submit">Sign the charter</button>
+          <div class="field-error" id="form-err" role="alert"></div>
+        </form>
+      </div>
+
+      <div id="done-view" class="success" hidden>
+        <div class="tick" aria-hidden="true">&#10003;</div>
+        <h2>Thank you, <span id="done-name"></span>!</h2>
+        <p>Your signed charter is on its way to <strong id="done-email"></strong>.</p>
+        <p class="hint">Can't find it? Check your spam folder.</p>
+        <p><a href="map.html">See everyone who has signed &rarr;</a></p>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/config.js"></script>
+  <script src="assets/sign.js"></script>
+</body>
+</html>
