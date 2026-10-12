@@ -15,4 +15,5 @@ See `PLAN.md` for the design.
 2. Enable GitHub Pages (Settings > Pages > deploy from `main`, root).
 3. Event day: sign once, check the Sheet and mail quota, open `map.html?display=1` on the big screen.
 
-Local preview: `python -m http.server` in this folder.
+Local preview: `npm start` in this folder, then open http://localhost:8000
+(or `python -m http.server 8000`).

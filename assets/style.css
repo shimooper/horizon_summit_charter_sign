@@ -29,6 +29,8 @@ main { max-width: 1400px; margin: 0 auto; padding: 16px; display: grid; gap: 20p
 @media (min-width: 900px) { main { grid-template-columns: 3fr 2fr; align-items: start; } }
 .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
 .card h2 { margin-top: 0; font-size: 1.2rem; }
+.logos { display: flex; justify-content: center; align-items: center; gap: 20px; margin-bottom: 16px; }
+.logos img { width: 96px; height: 96px; object-fit: contain; border-radius: 50%; }
 .viewer { width: 100%; height: 70vh; min-height: 420px; border: 1px solid var(--border); border-radius: 8px; }
 label { display: block; font-weight: 600; margin: 14px 0 4px; }
 input[type=text], input[type=email] {
