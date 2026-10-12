@@ -79,3 +79,5 @@ body.map-page { height: 100vh; display: flex; flex-direction: column; }
   box-shadow: 0 1px 6px rgba(0,0,0,.4);
 }
 .pin.cluster { background: #c2410c; color: #fff; }
+.viewer.pdfjs { overflow-y: auto; -webkit-overflow-scrolling: touch; background: var(--bg); }
+.viewer.pdfjs canvas { display: block; margin: 0 auto 8px; max-width: 100%; }

@@ -15,10 +15,9 @@
   <main>
     <section class="card" aria-labelledby="read-h">
       <h2 id="read-h">1. Read the charter</h2>
-      <object class="viewer" data="assets/Federal_Charter_Eng.pdf" type="application/pdf">
-        <p>Your browser can't display the PDF here.
-          <a href="assets/Federal_Charter_Eng.pdf">Download the charter</a>.</p>
-      </object>
+      <div id="pdf-view" class="viewer" data-src="assets/Federal_Charter_Eng.pdf">
+        <p class="hint">Loading the charter&hellip;</p>
+      </div>
       <p class="hint"><a href="assets/Federal_Charter_Eng.pdf" target="_blank" rel="noopener">Open / download the PDF</a></p>
     </section>
 
@@ -72,5 +71,6 @@
 
   <script src="assets/config.js"></script>
   <script src="assets/sign.js"></script>
+  <script src="assets/viewer.js"></script>
 </body>
 </html>
