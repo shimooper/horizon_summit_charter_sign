@@ -6,8 +6,8 @@
 
 var CONFIG = {
   // Public URL of the charter PDF on GitHub Pages (spaces encoded as %20).
-  CHARTER_URL: 'https://<github-username>.github.io/<repo>/assets/Federal%20Charter%20Eng.pdf',
-  SITE_URL: 'https://<github-username>.github.io/<repo>/',
+  CHARTER_URL: 'https://shimooper.github.io/horizon_summit_charter_sign/assets/Federal_Charter_Eng.pdf',
+  SITE_URL: 'https://shimooper.github.io/horizon_summit_charter_sign/',
   SHEET_NAME: 'Signers',
   MIN_SUBMIT_MS: 2000,
   MAX_SIGNS_PER_MINUTE: 30,
@@ -170,7 +170,11 @@ async function sendSigned_(signer) {
 }
 
 /** Retry all rows whose emailStatus is not "sent". Run manually from the editor. */
-async function retryFailed() {
+function retryFailed() {
+  retryFailedAsync_();
+}
+
+async function retryFailedAsync_() {
   var sh = sheet_();
   var n = sh.getLastRow() - 1;
   if (n < 1) return;

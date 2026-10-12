@@ -9,6 +9,13 @@
  * If pdf-lib fails, the original charter and the certificate are attached separately.
  */
 
+// pdf-lib yields to the event loop with setTimeout, which Apps Script lacks.
+// Running the callback immediately is fine: everything is microtask-driven here.
+if (typeof setTimeout === 'undefined') {
+  this.setTimeout = function (fn) { fn(); return 0; };
+  this.clearTimeout = function () {};
+}
+
 function escapeHtml_(s) {
   return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
@@ -39,8 +46,9 @@ function charterBytes_() {
 
 /** Appends the signature page to the charter. Returns a Blob. */
 async function stampCharter_(charterBytes, certBlob) {
-  var doc = await PDFLib.PDFDocument.load(charterBytes);
-  var sig = await PDFLib.PDFDocument.load(certBlob.getBytes());
+  // Apps Script byte arrays are signed Java arrays; pdf-lib needs a Uint8Array.
+  var doc = await PDFLib.PDFDocument.load(new Uint8Array(charterBytes));
+  var sig = await PDFLib.PDFDocument.load(new Uint8Array(certBlob.getBytes()));
   var pages = await doc.copyPages(sig, sig.getPageIndices());
   pages.forEach(function (p) { doc.addPage(p); });
   var bytes = await doc.save();
@@ -60,7 +68,11 @@ async function buildAttachments_(name, city, dateStr) {
 }
 
 /** Run from the editor to verify pdf-lib stamping works; check the logs and your Drive. */
-async function testStamp() {
+function testStamp() {
+  testStampAsync_();
+}
+
+async function testStampAsync_() {
   var atts = await buildAttachments_('Test Signer', 'Haifa, Israel', 'today');
   console.log('attachments: ' + atts.map(function (a) { return a.getName() + ' ' + a.getBytes().length; }).join(', '));
   DriveApp.createFile(atts[0]);
